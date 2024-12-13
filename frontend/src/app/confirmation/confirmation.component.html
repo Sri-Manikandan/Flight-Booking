@@ -1,0 +1,13 @@
+<div class="confirmation-container">
+    <h2>Booking Confirmation</h2>
+  
+    <div *ngIf="confirmationMessage">
+      <p>{{ confirmationMessage }}</p>
+    </div>
+    <div *ngIf="!confirmationMessage">
+      <p>No confirmation message available.</p>
+    </div>
+  
+    <button class="btn btn-primary" (click)="goToHome()">Go to Home</button>
+  </div>
+  

@@ -1,0 +1,35 @@
+<div class="container">
+  <h2>Flight Search</h2>
+
+  <!-- Flight Search Form -->
+  <form class="search-form" (submit)="searchFlights()">
+    <label for="from">From:</label>
+    <input id="from" type="text" [(ngModel)]="searchCriteria.from" name="from" required />
+
+    <label for="to">To:</label>
+    <input id="to" type="text" [(ngModel)]="searchCriteria.to" name="to" required />
+
+    <label for="departure">Departure Date:</label>
+    <input id="departure" type="date" [(ngModel)]="searchCriteria.departureTime" name="departure" required />
+
+    <button type="submit" [disabled]="!searchCriteria.from || !searchCriteria.to || !searchCriteria.departureTime">
+      Search Flights
+    </button>
+  </form>
+
+  <!-- Flight List -->
+  <div *ngIf="filteredFlights.length > 0" class="flight-list">
+    <div class="flight-card" *ngFor="let flight of filteredFlights">
+      <div class="flight-info">
+        <h3>{{ flight.flightName }}</h3>
+        <p><strong>From:</strong> {{ flight.from }} <strong>To:</strong> {{ flight.to }}</p>
+        <p><strong>Departure:</strong> {{ flight.departureTime }}</p>
+      </div>
+      <button (click)="selectFlight(flight)">Select Flight</button>
+    </div>
+  </div>
+
+  <div *ngIf="filteredFlights.length === 0 && flights.length > 0">
+    <p>No flights match your criteria. Try again.</p>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="container">
+  <h2>Seat Selection</h2>
+
+  <div class="seat-grid">
+    <div *ngFor="let seat of seats" [class.selected]="seat === selectedSeat" (click)="selectSeat(seat)">
+      <button>{{ seat }}</button>
+    </div>
+  </div>
+
+  <button [disabled]="!selectedSeat" (click)="proceed()">Proceed</button>
+</div>
